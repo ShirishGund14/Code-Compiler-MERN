@@ -6,9 +6,11 @@ const executePy = (filepath) => {
       `python ${filepath}`,
       (error, stdout, stderr) => {
         if (error || stderr) {
-          const errorMessage = error ? error.message : stderr;
-          reject({ errorMessage, stdout, stderr });
+          console.error(`Error: ${error}`);
+          console.error(`stderr: ${stderr}`);
+          reject({ error, stderr });
         } else {
+          console.log(`Execution successful:\n${stdout}`);
           resolve(stdout);
         }
       }
