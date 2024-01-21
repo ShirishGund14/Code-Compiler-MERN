@@ -17,7 +17,7 @@ const executeCpp = (filepath) => {
   return new Promise((resolve, reject) => {
     exec(
       //.\a.exe
-      `g++ ${filepath} -o ${outPath} && cd ${outputPath} && ${jobId}.exe`,
+      `g++ ${filepath} -o ${outPath} && cd ${outputPath} && ./${jobId}`,
       (error, stdout, stderr) => {
         error && reject({error,stderr});
         stderr && reject(stderr);
