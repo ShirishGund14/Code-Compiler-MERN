@@ -9,24 +9,27 @@ if (!fs.existsSync(outputPath)) {
 }
 
 const executeCpp = (filepath) => {
-  const jobId = path.basename(filepath).split(".")[0];
-  const outPath = path.join(outputPath, `${jobId}.exe`);
+  const jobId = path.basename(filepath, path.extname(filepath));
+  const outPath = path.join(outputPath, jobId);
 
-  // console.log(outPath);
+  console.log(`Compiling ${filepath} to ${outPath}`);
 
   return new Promise((resolve, reject) => {
     exec(
-      //.\a.exe
       `g++ ${filepath} -o ${outPath} && cd ${outputPath} && ./${jobId}`,
       (error, stdout, stderr) => {
-        error && reject({error,stderr});
-        stderr && reject(stderr);
-        resolve(stdout);
+        if (error || stderr) {
+          console.error(`Error: ${error}`);
+          console.error(`stderr: ${stderr}`);
+          reject({ error, stderr });
+        } else {
+          console.log(`Execution successful:\n${stdout}`);
+          resolve(stdout);
+        }
       }
     );
-  })
+  });
 };
-
 
 module.exports = {
   executeCpp,
