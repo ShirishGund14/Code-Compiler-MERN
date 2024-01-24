@@ -11,6 +11,11 @@ CPYLER is a online code compiler which can run c++ and python codes ,it is full 
 + Secure Authetication 
 + Auto Suggestions
 
+
+Authentication
+![image](https://github.com/ShirishGund14/Code-Compiler-MERN/assets/112975178/e2bceee9-300d-404e-9c94-f8b14eb25519)
+
+
 Home page
 ![image](https://github.com/ShirishGund14/Code-Compiler-MERN/assets/112975178/48e5d297-b6a5-40dd-913d-6b5a928e047a)
 
